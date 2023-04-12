@@ -1,0 +1,14 @@
+for ((i=1;i<12 ;i++))
+do
+ echo -e "\e[42mPOST /login/local\e[0m" "\e[45m$i\e[0m"
+ curl -X POST localhost:8777/api/login/local
+ echo -e ""
+done
+
+
+for ((i=1;i<12 ;i++))
+do
+ echo -e "\e[42mGET ping\e[0m" "\e[45m$i\e[0m"
+ curl -X GET localhost:8777/api/ping
+ echo -e ""
+done

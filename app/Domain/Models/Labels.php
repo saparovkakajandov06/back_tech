@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Domain\Models;
+
+class Labels
+{
+    const TYPE_LIKES = 'TYPE_LIKES';
+    const TYPE_SUBS = 'TYPE_SUBS';
+    const TYPE_VIEWS = 'TYPE_VIEWS';
+    const TYPE_COMMENTS = 'TYPE_COMMENTS';
+    const TYPE_AUTO = 'TYPE_AUTO';
+    const TYPE_AUTOVIEWS = 'TYPE_AUTOVIEWS';
+    const TYPE_AUTOLIKES = 'TYPE_AUTOLIKES';
+    const TYPE_REPOSTS = 'TYPE_REPOSTS';
+    const TYPE_STORIES = 'TYPE_STORIES';
+    const TYPE_FRIENDS = 'TYPE_FRIENDS';
+    const TYPE_OTHER = 'TYPE_OTHER';
+
+    const TYPE_TEST = 'TYPE_TEST';
+
+    const DISCOUNT_BASIC = 'DISCOUNT_BASIC';
+    const DISCOUNT_LIKES = 'DISCOUNT_LIKES';
+    const DISCOUNT_SUBS = 'DISCOUNT_SUBS';
+    const DISCOUNT_VIEWS = 'DISCOUNT_VIEWS';
+    const DISCOUNT_COMMENTS = 'DISCOUNT_COMMENTS';
+    const DISCOUNT_TEST = 'DISCOUNT_TEST';
+
+    const DISCOUNT_AUTO_LIKES = 'DISCOUNT_AUTO_LIKES';
+    const DISCOUNT_AUTO_VIEWS = 'DISCOUNT_AUTO_VIEWS';
+
+
+    const VISIBLE = 'VISIBLE';
+    const INVISIBLE = 'INVISIBLE';
+
+    const ENABLED = 'ENABLED';
+    const DISABLED = 'DISABLED';
+
+    const CLIENT_LK = 'CLIENT_LK';
+    const CLIENT_MAIN = 'CLIENT_MAIN';
+    const CLIENT_TELEGRAM = 'CLIENT_TELEGRAM';
+}

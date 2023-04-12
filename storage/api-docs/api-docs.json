@@ -1,0 +1,2489 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "L5 OpenApi",
+        "description": "Smm Api Documentation",
+        "contact": {
+            "email": "takahiroasiro@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/admin/users": {
+            "get": {
+                "tags": [
+                    "Admin/User"
+                ],
+                "summary": "Find user by name or email",
+                "description": "Администратор: поиск пользователя по имени или email",
+                "operationId": "index",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "The name parameter in query",
+                        "required": true
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "The email parameter in query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/admin/find": {
+            "get": {
+                "tags": [
+                    "Admin/User"
+                ],
+                "summary": "Find user by name or email with balances",
+                "description": "Администратор: поиск пользователя по имени или emailс их балансами",
+                "operationId": "find",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "The name parameter in query",
+                        "required": true
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "The email parameter in query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/articles": {
+            "get": {
+                "tags": [
+                    "Article"
+                ],
+                "summary": "Articles list",
+                "description": "Получение списка статей",
+                "operationId": "index",
+                "parameters": [
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "The offset parameter in query",
+                        "required": false,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The limit parameter in query",
+                        "required": false,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "The sort parameter in query",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Article"
+                ],
+                "summary": "Creating an article",
+                "description": "Создание статьи",
+                "operationId": "store",
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "in": "query",
+                        "description": "The slug parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cover",
+                        "in": "query",
+                        "description": "The cover parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "heading",
+                        "in": "query",
+                        "description": "The heading parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "The description parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "tags",
+                        "in": "query",
+                        "description": "The tags parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "article",
+                        "in": "query",
+                        "description": "The article parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "headtitle",
+                        "in": "query",
+                        "description": "The headtitle parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "headdescription",
+                        "in": "query",
+                        "description": "The headdescription parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Article created"
+                    }
+                }
+            }
+        },
+        "/api/articles/{slug}": {
+            "get": {
+                "tags": [
+                    "Article"
+                ],
+                "summary": "Getting a unique article",
+                "description": "Получение уникальной статьи",
+                "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "in": "query",
+                        "description": "The offset parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/articles_by_user": {
+            "get": {
+                "tags": [
+                    "Article"
+                ],
+                "summary": "Retrieving user articles",
+                "description": "Получение статей пользователя",
+                "operationId": "articlesByUser",
+                "responses": {
+                    "200": {
+                        "description": "Articles list by user"
+                    }
+                }
+            }
+        },
+        "/api/articles/{id}": {
+            "put": {
+                "tags": [
+                    "Article"
+                ],
+                "summary": "update articles",
+                "description": "Обновление статей",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "request",
+                        "in": "query",
+                        "description": "The request object parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Article"
+                ],
+                "summary": "destroy articles",
+                "description": "Удаление статей",
+                "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The request id parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Articles deleted successfully"
+                    }
+                }
+            }
+        },
+        "/api/login/local": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Local login",
+                "description": "Локальный логин: login/email + password",
+                "operationId": "localLogin",
+                "parameters": [
+                    {
+                        "name": "login",
+                        "in": "query",
+                        "description": "The login parameter in query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "The email parameter in query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "The password parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/login/ulogin/token": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "uLogin by token",
+                "description": "Логин через социальную сеть с помощью токена uLogin Возвращает токен либо массив данных для уточнения email",
+                "operationId": "uLoginByToken",
+                "parameters": [
+                    {
+                        "name": "host",
+                        "in": "query",
+                        "description": "The host parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "The token parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/login/ulogin/data": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "uLogin by data",
+                "description": "Логин через uLogin с помощью массива данных о пользователе",
+                "operationId": "uLoginByData",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "query",
+                        "description": "The data parameter array in query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/update_password": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Update password",
+                "description": "Обновить пароль",
+                "operationId": "updatePassword",
+                "parameters": [
+                    {
+                        "name": "old_password",
+                        "in": "query",
+                        "description": "The old_password parameter array in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "The password parameter array in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password_confirm",
+                        "in": "query",
+                        "description": "The password_confirm parameter array in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Password changed"
+                    }
+                }
+            }
+        },
+        "/api/update_avatar": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Update avatar",
+                "description": "Обновить аватар",
+                "operationId": "updateAvatar",
+                "parameters": [
+                    {
+                        "name": "avatar",
+                        "in": "query",
+                        "description": "The avatar parameter mimes: jpeg, jpg, png",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "avatar changed"
+                    }
+                }
+            }
+        },
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Register new user",
+                "description": "Регистрация нового пользователя",
+                "operationId": "register",
+                "parameters": [
+                    {
+                        "name": "login",
+                        "in": "query",
+                        "description": "The login parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "The email parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "The password parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password_confirm",
+                        "in": "query",
+                        "description": "The password_confirm parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lang",
+                        "in": "query",
+                        "description": "The lang parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ref_code",
+                        "in": "query",
+                        "description": "The ref_code parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cur",
+                        "in": "query",
+                        "description": "The cur parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/confirm/{confirmationCode}": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Verify registration",
+                "description": "Подтверждает регистрацию нового пользователя В случае успеха устанавливает пользователю группу ROLE_VERIFIED",
+                "operationId": "confirm",
+                "parameters": [
+                    {
+                        "name": "confirmation_code",
+                        "in": "path",
+                        "description": "The confirmation_code parameter array in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/reset": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Reset password",
+                "description": "Отправляет пользователю письмо с кодом для смены пароля",
+                "operationId": "reset",
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "description": "The username parameter array in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "The email parameter array in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lang",
+                        "in": "query",
+                        "description": "The lang parameter array in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/set_password": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Set password",
+                "description": "Устанавливает новый пароль по коду из письма",
+                "operationId": "setPassword",
+                "parameters": [
+                    {
+                        "name": "reset_code",
+                        "in": "query",
+                        "description": "The reset_code parameter array in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "The password parameter array in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password_confirm",
+                        "in": "query",
+                        "description": "The password_confirm parameter array in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Log out",
+                "description": "Выйти из системы",
+                "operationId": "logout",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/c_orders": {
+            "get": {
+                "tags": [
+                    "CompositeOrder"
+                ],
+                "summary": " List of composite orders for current user",
+                "description": "Заказы текущего пользователя",
+                "operationId": "index",
+                "parameters": [
+                    {
+                        "name": "tag",
+                        "in": "query",
+                        "description": "The tag parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "The status parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "The offset parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The limit parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Возвращает Историю заказов"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "CompositeOrder"
+                ],
+                "summary": "Create composite order",
+                "description": "Для создания заказов в ЛК Набор параметров зависит от сервиса",
+                "operationId": "create",
+                "parameters": [
+                    {
+                        "name": "tag",
+                        "in": "query",
+                        "description": "The tag parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Возвращает массив заказов"
+                    }
+                }
+            }
+        },
+        "/api/c_orders/async": {
+            "post": {
+                "tags": [
+                    "CompositeOrder"
+                ],
+                "summary": "Create Async order",
+                "description": "Для создания заказов в ЛК",
+                "operationId": "createAsync",
+                "parameters": [
+                    {
+                        "name": "tag",
+                        "in": "query",
+                        "description": "The tag parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Возвращает массив заказов"
+                    }
+                }
+            }
+        },
+        "/api/c_orders/main": {
+            "post": {
+                "tags": [
+                    "CompositeOrder"
+                ],
+                "summary": "Create order from main page",
+                "description": "Для создания заказов с главной страницы\n     *      Может принимать любые параметры, например link, count и т.д.\n     *      Набор параметров зависит от UserService",
+                "operationId": "main",
+                "parameters": [
+                    {
+                        "name": "tag",
+                        "in": "query",
+                        "description": "The tag parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "success_url",
+                        "in": "query",
+                        "description": "The success_url parameter in query",
+                        "required": true
+                    },
+                    {
+                        "name": "cancel_url",
+                        "in": "query",
+                        "description": "The cancel_url parameter in query",
+                        "required": true
+                    },
+                    {
+                        "name": "auto_token",
+                        "in": "query",
+                        "description": "The auto_token parameter in query",
+                        "required": false
+                    },
+                    {
+                        "name": "ref_code",
+                        "in": "query",
+                        "description": "The ref_code parameter in query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "session_id",
+                        "in": "query",
+                        "description": "The session_id parameter in query",
+                        "required": false
+                    },
+                    {
+                        "name": "link",
+                        "in": "query",
+                        "description": "The link parameter in query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "login",
+                        "in": "query",
+                        "description": "The login parameter in query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/c_orders/{id}": {
+            "get": {
+                "tags": [
+                    "CompositeOrder"
+                ],
+                "summary": "Show order",
+                "description": "Показывает заказ",
+                "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The id parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/orders": {
+            "get": {
+                "tags": [
+                    "CompositeOrder"
+                ],
+                "summary": "Shows orders for the moderator",
+                "description": "Показывает заказы для модератора",
+                "operationId": "getOrdersForModerator2",
+                "parameters": [
+                    {
+                        "name": "request",
+                        "in": "query",
+                        "description": "The id request object in query",
+                        "required": true,
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Список транзакций модератора"
+                    }
+                }
+            }
+        },
+        "/api/c_orders/payment": {
+            "get": {
+                "tags": [
+                    "CompositeOrder"
+                ],
+                "summary": "payment data",
+                "description": "данные о платеже",
+                "operationId": "showPaymentFromAPI",
+                "parameters": [
+                    {
+                        "name": "payment_id",
+                        "in": "query",
+                        "description": "The payment_id parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/moderator/changeOrderStatus": {
+            "post": {
+                "tags": [
+                    "CompositeOrder"
+                ],
+                "summary": "Manual change of order status",
+                "description": "Ручное изменение статуса заказа",
+                "operationId": "changeOrderStatus",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "The status parameter in query",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The id parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/c_orders/uuid/{uuid}": {
+            "get": {
+                "tags": [
+                    "CompositeOrder"
+                ],
+                "summary": "Get order by uuid",
+                "description": "Получите заказ по uuid",
+                "operationId": "showByUUID",
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "query",
+                        "description": "The uuid parameter in query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/c_orders/{id}/logs": {
+            "get": {
+                "tags": [
+                    "CompositeOrder"
+                ],
+                "summary": "Get order logs",
+                "description": "Get order logs",
+                "operationId": "OLogs",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The id parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/c_orders/{id}/restart": {
+            "post": {
+                "tags": [
+                    "CompositeOrder"
+                ],
+                "summary": "restart order",
+                "description": "restart order",
+                "operationId": "restart",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The id parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/c_orders/{id}/update": {
+            "post": {
+                "tags": [
+                    "CompositeOrder"
+                ],
+                "summary": "update order",
+                "description": "Обновление заказа",
+                "operationId": "updateCommand",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The id parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/cur/usd": {
+            "get": {
+                "tags": [
+                    "Currencies"
+                ],
+                "summary": "Get usd Rate",
+                "description": "Получить курс доллара США",
+                "operationId": "usd",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/img/upload": {
+            "post": {
+                "tags": [
+                    "ImageUpload"
+                ],
+                "summary": "Loading an image",
+                "description": "Загрузка изображения",
+                "operationId": "imageUploadPost",
+                "parameters": [
+                    {
+                        "name": "image",
+                        "in": "query",
+                        "description": "The image parameter file in query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Password changed"
+                    }
+                }
+            }
+        },
+        "/api/notifications": {
+            "get": {
+                "tags": [
+                    "Notifications"
+                ],
+                "summary": "Get list of notifications",
+                "description": "Returns list of notifications",
+                "operationId": "getNotifications",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Notifications"
+                ],
+                "summary": "Post a new notification",
+                "description": "Returns list of notifications",
+                "operationId": "postNotifications",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NotificationPostRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/notifications/{id}": {
+            "put": {
+                "tags": [
+                    "Notifications"
+                ],
+                "summary": "Update selected notification",
+                "description": "Returns updated notification",
+                "operationId": "getNotifications",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NotificationPostRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad data was given."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Notifications"
+                ],
+                "summary": "Delete selected notification",
+                "description": "Delete selected notification",
+                "operationId": "destroyNotifications",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/withdrawal": {
+            "post": {
+                "tags": [
+                    "Payments"
+                ],
+                "summary": "Withdraw money",
+                "description": "Вывод денег",
+                "operationId": "withdraw",
+                "parameters": [
+                    {
+                        "name": "amount",
+                        "in": "query",
+                        "description": "The amount parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "withdraw_method",
+                        "in": "query",
+                        "description": "The withdraw_method parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "wallet_number",
+                        "in": "query",
+                        "description": "The wallet_number parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "cur",
+                        "in": "query",
+                        "description": "The cur parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/user/transactions": {
+            "get": {
+                "tags": [
+                    "Payments"
+                ],
+                "summary": "User's transactions",
+                "description": "Список транзакций пользователя",
+                "operationId": "transactions",
+                "parameters": [
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "The offset parameter in query",
+                        "required": false,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The limit parameter in query",
+                        "required": false,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "date_from",
+                        "in": "query",
+                        "description": "The date_from parameter in query",
+                        "required": false,
+                        "schema": {
+                            "type": "date"
+                        }
+                    },
+                    {
+                        "name": "date_to",
+                        "in": "query",
+                        "description": "The date_to parameter in query",
+                        "required": false,
+                        "schema": {
+                            "type": "date"
+                        }
+                    },
+                    {
+                        "name": "transaction_group",
+                        "in": "query",
+                        "description": "The transaction_group parameter in query",
+                        "required": false
+                    },
+                    {
+                        "name": "cur",
+                        "in": "query",
+                        "description": "The cur parameter in query",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/user/transactions/totals": {
+            "get": {
+                "tags": [
+                    "Payments"
+                ],
+                "summary": "User's totals",
+                "description": "Группировка сумм транзакций пользователя по категориям",
+                "operationId": "totals",
+                "parameters": [
+                    {
+                        "name": "cur",
+                        "in": "query",
+                        "description": "The cur parameter in query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/ping": {
+            "get": {
+                "tags": [
+                    "Ping"
+                ],
+                "summary": "Get ping",
+                "description": "Пинг апи",
+                "operationId": "pong",
+                "responses": {
+                    "200": {
+                        "description": "pong"
+                    }
+                }
+            }
+        },
+        "/api/test_auth": {
+            "get": {
+                "tags": [
+                    "Ping"
+                ],
+                "summary": "Test auth",
+                "description": "Проверка авторизации",
+                "operationId": "testAuth",
+                "responses": {
+                    "200": {
+                        "description": "test auth"
+                    }
+                }
+            }
+        },
+        "/api/test_moderator": {
+            "get": {
+                "tags": [
+                    "Ping"
+                ],
+                "summary": "Test moderator",
+                "description": "Проверка прав доступа для модератора",
+                "operationId": "testModerator",
+                "responses": {
+                    "200": {
+                        "description": "test moderator"
+                    }
+                }
+            }
+        },
+        "/api/test_admin": {
+            "get": {
+                "tags": [
+                    "Ping"
+                ],
+                "summary": "Test admin",
+                "description": "Проверка прав доступа для администратора",
+                "operationId": "testAdmin",
+                "responses": {
+                    "200": {
+                        "description": "test admin"
+                    }
+                }
+            }
+        },
+        "/api/long": {
+            "get": {
+                "tags": [
+                    "Ping"
+                ],
+                "summary": "Get long",
+                "description": "long апи",
+                "operationId": "long",
+                "parameters": [
+                    {
+                        "name": "sleep",
+                        "in": "query",
+                        "description": "The sleep parameter in query",
+                        "required": false,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/slow": {
+            "get": {
+                "tags": [
+                    "Ping"
+                ],
+                "summary": "Get slow",
+                "description": "slow апи",
+                "operationId": "slow",
+                "responses": {
+                    "200": {
+                        "description": "user name"
+                    }
+                }
+            }
+        },
+        "/api/posts": {
+            "get": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Get list of posts",
+                "description": "Returns list of posts",
+                "operationId": "getPosts",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Create a new post",
+                "description": "Returns a post",
+                "operationId": "storePosts",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PostCreateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/posts/{id}": {
+            "get": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Returns selected post",
+                "description": "Returns selected post",
+                "operationId": "getPost",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Updates a post",
+                "description": "Returns an updated post",
+                "operationId": "updatePost",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PostCreateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Deletes selected post",
+                "description": "Deletes selected post",
+                "operationId": "destroyPost",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/premium_statuses": {
+            "get": {
+                "tags": [
+                    "PremiumStatus"
+                ],
+                "summary": "User details",
+                "description": "Список статусов для программы лояльности",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/admin/users/status": {
+            "post": {
+                "tags": [
+                    "PremiumStatus"
+                ],
+                "summary": "Update PremiumStatus",
+                "description": "Изменение статуса в программе лояльности",
+                "operationId": "updateBalance",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The id parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "The status parameter in query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/prices": {
+            "get": {
+                "tags": [
+                    "Prices"
+                ],
+                "summary": "Get list of prices",
+                "description": "Returns list of prices",
+                "operationId": "getPrices",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Prices"
+                ],
+                "summary": "Post a new price",
+                "description": "Returns list of prices",
+                "operationId": "postPrice",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PriceCreateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/prices/{id}": {
+            "put": {
+                "tags": [
+                    "Prices"
+                ],
+                "summary": "Post a new price",
+                "description": "Returns an updated price",
+                "operationId": "putNotifications",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PriceCreateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Prices"
+                ],
+                "summary": "Delete selected price",
+                "description": "Delete selected price",
+                "operationId": "destroyPrice",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/region": {
+            "get": {
+                "tags": [
+                    "Regions"
+                ],
+                "summary": "List of extern services",
+                "description": "Список всех Регионов",
+                "operationId": "region",
+                "parameters": [
+                    {
+                        "name": "ip_value",
+                        "in": "query",
+                        "description": "The ip_value parameter in query",
+                        "required": false
+                    },
+                    {
+                        "name": "country_value",
+                        "in": "query",
+                        "description": "The country_value parameter in query",
+                        "required": false
+                    },
+                    {
+                        "name": "region_value",
+                        "in": "query",
+                        "description": "The region_value parameter in query",
+                        "required": false
+                    },
+                    {
+                        "name": "currency_value",
+                        "in": "query",
+                        "description": "The currency_value parameter in query",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/xsearch/count": {
+            "get": {
+                "tags": [
+                    "Search"
+                ],
+                "summary": "Search count",
+                "description": "count",
+                "operationId": "xCount",
+                "parameters": [
+                    {
+                        "name": "tag",
+                        "in": "query",
+                        "description": "The tag parametr in query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "link",
+                        "in": "query",
+                        "description": "The link parametr in query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "group",
+                        "in": "query",
+                        "description": "The group parametr in query",
+                        "required": false
+                    },
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "description": "The username parametr in query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "The email parametr in query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Результат поиска"
+                    }
+                }
+            }
+        },
+        "/api/xsearch": {
+            "get": {
+                "tags": [
+                    "Search"
+                ],
+                "summary": "Search orders",
+                "description": "Search orders",
+                "operationId": "xSearch",
+                "parameters": [
+                    {
+                        "name": "tag",
+                        "in": "query",
+                        "description": "The tag parametr in query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "link",
+                        "in": "query",
+                        "description": "The link parametr in query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "group",
+                        "in": "query",
+                        "description": "The group parametr in query",
+                        "required": false
+                    },
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "description": "The username parametr in query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "The email parametr in query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "The offset parametr in query",
+                        "required": false,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The limit parametr in query",
+                        "required": false,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Результат поиска"
+                    }
+                }
+            }
+        },
+        "/api/extern_services": {
+            "get": {
+                "tags": [
+                    "Service"
+                ],
+                "summary": "List of extern services",
+                "description": "Список всех сервисов",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/stripe_deposit": {
+            "post": {
+                "tags": [
+                    "Stripe"
+                ],
+                "summary": "Checkout Session",
+                "description": "Создание сессии Stripe",
+                "operationId": "stripePay",
+                "parameters": [
+                    {
+                        "name": "amount",
+                        "in": "query",
+                        "description": "The amount parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "cur",
+                        "in": "query",
+                        "description": "The cur parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "success_url",
+                        "in": "query",
+                        "description": "The success_url parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cancel_url",
+                        "in": "query",
+                        "description": "The cancel_url parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/stripeStatus": {
+            "post": {
+                "tags": [
+                    "Stripe"
+                ],
+                "summary": "Hook for stripe",
+                "description": "Сюда стучится stripe",
+                "operationId": "stripeStatus",
+                "parameters": [
+                    {
+                        "name": "request",
+                        "in": "query",
+                        "description": "The object request parameters in query",
+                        "required": true,
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/userjobs": {
+            "get": {
+                "tags": [
+                    "UserJobs"
+                ],
+                "summary": "List available jobs for user",
+                "description": "Доступные задания для пользователя",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "Доступные задания"
+                    }
+                }
+            }
+        },
+        "/api/userjobs/{id}": {
+            "post": {
+                "tags": [
+                    "UserJobs"
+                ],
+                "summary": "Create new action",
+                "description": "Создает action для локального задания",
+                "operationId": "create",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The id parametr in query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok, action created"
+                    }
+                }
+            }
+        },
+        "/api/userjobs/check/{actionId}": {
+            "post": {
+                "tags": [
+                    "UserJobs"
+                ],
+                "summary": "Check user job status",
+                "description": " Запрос на проверку статуса задания",
+                "operationId": "check",
+                "parameters": [
+                    {
+                        "name": "actionId",
+                        "in": "query",
+                        "description": "The actionId parametr in query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Результат поиска"
+                    }
+                }
+            }
+        },
+        "/api/user_services/find": {
+            "get": {
+                "tags": [
+                    "UserServices"
+                ],
+                "summary": "find User Services",
+                "description": "Поиск - Пользовательские сервисы",
+                "operationId": "find",
+                "parameters": [
+                    {
+                        "name": "visible",
+                        "in": "query",
+                        "description": "The visible parameter in query",
+                        "required": false
+                    },
+                    {
+                        "name": "reg",
+                        "in": "query",
+                        "description": "The reg parameter in query",
+                        "required": false
+                    },
+                    {
+                        "name": "main",
+                        "in": "query",
+                        "description": "The main parameter in query",
+                        "required": false
+                    },
+                    {
+                        "name": "show_group",
+                        "in": "query",
+                        "description": "The show_group parameter in query",
+                        "required": false
+                    },
+                    {
+                        "name": "tag",
+                        "in": "query",
+                        "description": "The tag parameter in query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/user_services/{tag}": {
+            "post": {
+                "tags": [
+                    "UserServices"
+                ],
+                "summary": "Update UserService",
+                "description": "Админ: обновить данные пользовательского сервиса",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "tag",
+                        "in": "query",
+                        "description": "The tag parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updated"
+                    }
+                }
+            }
+        },
+        "/api/user_services/disconnect": {
+            "post": {
+                "tags": [
+                    "UserServices"
+                ],
+                "summary": "User services disconnectById",
+                "description": "Отключение пользовательского сервиса по id",
+                "operationId": "disconnectById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The visible parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/user_services/connect": {
+            "post": {
+                "tags": [
+                    "UserServices"
+                ],
+                "summary": "User services connectById",
+                "description": "Включение пользовательского сервиса по id",
+                "operationId": "connectById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The visible parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/moderator/updatePrecent": {
+            "post": {
+                "tags": [
+                    "UserServices"
+                ],
+                "summary": "Bulk change of order percentages",
+                "description": "Bulk change of order percentages, min, max or server shutdown",
+                "operationId": "updatePercentAndCountGroup",
+                "parameters": [
+                    {
+                        "name": "request",
+                        "in": "query",
+                        "description": "The request parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/moderator/getPrecent": {
+            "get": {
+                "tags": [
+                    "UserServices"
+                ],
+                "summary": "Getting a group",
+                "description": "Получаем группу, либо Лайки либо подписчики(группа выборочная)",
+                "operationId": "getGroupForModerate",
+                "parameters": [
+                    {
+                        "name": "request",
+                        "in": "query",
+                        "description": "The request object parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get List of users",
+                "description": "Returns List of users",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/user": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "User details",
+                "description": "Информация о текущем пользователе",
+                "operationId": "details",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/user2": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "This is method with correct return for future method switch  ",
+                "description": "Информация о текущем пользователе",
+                "operationId": "details",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/user/transactions/ref_bonuses": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Information about the referral deductions of the user",
+                "description": "Информация о реферальных отчислениях пользователя",
+                "operationId": "getRefBonuses",
+                "parameters": [
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "The offset parameter in query",
+                        "required": false,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The limit parameter in query",
+                        "required": false,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "cur",
+                        "in": "query",
+                        "description": "The cur parameter in query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/admin/users/balance": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Function to change user balance",
+                "description": "Функция для изменения баланса пользователя",
+                "operationId": "updateBalance",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The id parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "cur",
+                        "in": "query",
+                        "description": "The cur parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "action",
+                        "in": "query",
+                        "description": "The action parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "value",
+                        "in": "query",
+                        "description": "The value parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/update": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "update user",
+                "description": "обновить пользователя",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "request",
+                        "in": "query",
+                        "description": "The object request parameters in query",
+                        "required": true,
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/yk_pay or /yk_session": {
+            "post": {
+                "tags": [
+                    "YandexKassa"
+                ],
+                "summary": "Deposit with yandex",
+                "description": "Пополнить счет через яндекс-кассу",
+                "operationId": "ykPay",
+                "parameters": [
+                    {
+                        "name": "amount",
+                        "in": "query",
+                        "description": "The amount request parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "cur",
+                        "in": "query",
+                        "description": "The cur request parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "success_url",
+                        "in": "query",
+                        "description": "The success_url request parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cancel_url",
+                        "in": "query",
+                        "description": "The cancel_url request parameter in query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/yk_status": {
+            "post": {
+                "tags": [
+                    "YandexKassa"
+                ],
+                "summary": "Hook for yandex",
+                "description": "Сюда стучится яндекс-касса",
+                "operationId": "ykStatus",
+                "parameters": [
+                    {
+                        "name": "request",
+                        "in": "query",
+                        "description": "The object request parameters in query",
+                        "required": true,
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "NotificationPostRequest": {
+                "title": "Creating request for a notification",
+                "description": "Creating request for a notification",
+                "properties": {
+                    "content": {
+                        "title": "Content",
+                        "description": "Notification body",
+                        "format": "string",
+                        "example": "We have a lunch today"
+                    }
+                },
+                "type": "object"
+            },
+            "PostCreateRequest": {
+                "title": "Creating request for a post",
+                "description": "Creating request for a post",
+                "properties": {
+                    "name": {
+                        "title": "Name",
+                        "description": "Post's name",
+                        "format": "string",
+                        "example": "We have a lunch today"
+                    },
+                    "content": {
+                        "title": "Content",
+                        "description": "Content body",
+                        "format": "string",
+                        "example": "We have a lunch today"
+                    }
+                },
+                "type": "object"
+            },
+            "PriceCreateRequest": {
+                "title": "Creating request for a price",
+                "description": "Creating request for a price",
+                "properties": {
+                    "cost": {
+                        "title": "Cost",
+                        "description": "Cost for price",
+                        "format": "integer",
+                        "example": "10"
+                    },
+                    "count": {
+                        "title": "Count for a price",
+                        "description": "Count for a price",
+                        "format": "integer",
+                        "example": "10"
+                    },
+                    "economy": {
+                        "title": "Economy for a price",
+                        "description": "How much user will save on a buy",
+                        "format": "integer",
+                        "example": "20"
+                    },
+                    "category_id": {
+                        "title": "Price Category Id",
+                        "description": "Give a category id of a price",
+                        "format": "integer",
+                        "example": "3"
+                    },
+                    "is_featured": {
+                        "title": "Price feature",
+                        "description": "Decides whether price will be shown on a main page",
+                        "format": "boolean",
+                        "example": "true"
+                    },
+                    "features": {
+                        "title": "Price's features",
+                        "description": "Provide all features, you wanna give for a price",
+                        "format": "array",
+                        "example": "[1, 10, 5]"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Notifications"
+        }
+    ],
+    "security": [
+        []
+    ]
+}

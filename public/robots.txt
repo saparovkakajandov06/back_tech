@@ -1,0 +1,90 @@
+User-agent: *
+#ALL BOTS:
+
+Disallow: /1/pt
+Disallow: /1/es
+Disallow: */reset$
+Disallow: */login$
+Disallow: */signup$
+Disallow: */light$
+Disallow: */reset/*
+Disallow: */login/*
+Disallow: */signup/*
+Disallow: */light/*
+
+Disallow: */policy$
+
+Disallow: /docs/*.pdf
+
+Allow: /en/public-agreement/world$
+Allow: /en/refund-policy/world$
+Allow: /en/private-policy/world$
+Allow: /public-agreement/world-ru$
+Allow: /refund-policy/ru$
+Allow: /private-policy/world-ru$
+
+Disallow: */public-agreement/world
+Disallow: */refund-policy/world
+Disallow: */private-policy/world
+Disallow: */public-agreement/cis-and-ua
+Disallow: */refund-policy/cis-and-ua
+Disallow: */private-policy/cis-and-ua
+Disallow: */public-agreement/world-ru
+Disallow: */refund-policy/ru
+Disallow: */private-policy/world-ru
+
+Disallow: */*?action=
+Disallow: */*?rd=
+Disallow: */*?ref=
+Disallow: */*?etext=
+Disallow: */*?yadclid=
+Disallow: */*?yadordid=
+Disallow: */*?fromCp=
+Disallow: */*?gclid=
+Disallow: */*?utm_campaign=
+Disallow: */*?utm_medium=
+Disallow: */*?utm_source=
+Disallow: */*?utm_term=
+Disallow: */*?utm_content=
+Disallow: */*?lang=
+Disallow: */*?to=
+Disallow: */*?tab=
+Disallow: */*?ulogin_callback=
+Disallow: */*?service=
+Disallow: */*?wvstest=
+Disallow: */*?payment=
+Disallow: */*?accepted=
+Disallow: */*?succeed=
+Disallow: */*?payment_id=
+Disallow: *login?
+Disallow: */pgadmin/
+Disallow: */payment/
+
+Disallow: */*&action=
+Disallow: */*&rd=
+Disallow: */*&ref=
+Disallow: */*&etext=
+Disallow: */*&yadclid=
+Disallow: */*&yadordid=
+Disallow: */*&fromCp=
+Disallow: */*&gclid=
+Disallow: */*&utm_campaign=
+Disallow: */*&utm_medium=
+Disallow: */*&utm_source=
+Disallow: */*&utm_term=
+Disallow: */*&utm_content=
+Disallow: */*&lang=
+Disallow: */*&to=
+Disallow: */*&tab=
+Disallow: */*&ulogin_callback=
+Disallow: */*&service=
+Disallow: */*&wvstest=
+Disallow: */*&other_stat=
+Disallow: */*&payment=
+Disallow: */*&accepted=
+Disallow: */*&succeed=
+Disallow: */*&payment_id=
+
+#HELP: do not dissalow page= - use rel=canonical and  rel=next and rel=prev
+#Yandex only:
+Clean-param: action&rd&ref&etext&yadclid&yadordid&fromCp&gclid&utm_campaign&utm_medium&utm_source&utm_term&utm_content&lang&to&tab&ulogin_callback&service&wvstest&other_stat&payment&accepted&succeed&payment_id

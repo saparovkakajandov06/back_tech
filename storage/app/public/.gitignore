@@ -1,0 +1,6 @@
+*
+!app/
+!app/payment_systems/
+!app/payment_systems/.gitignore
+!.gitignore
+!guides/

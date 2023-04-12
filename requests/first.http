@@ -1,0 +1,14 @@
+GET http://localhost:8000/api/cat
+Accept: application/json
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(1 == 1, "one is not one");
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+###
+
+GET http://localhost:8000/api/user_services/GROUP_LIKES
+

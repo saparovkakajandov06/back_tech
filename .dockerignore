@@ -1,0 +1,12 @@
+Dockerfile
+Dockerfile74
+Dockerfile.*
+.dockerignore
+Makefile
+.git
+.gitignore
+.idea
+.editorconfig
+readme.md
+y_master.log
+docker
